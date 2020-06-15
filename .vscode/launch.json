@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Windows Service (console)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "Build Windows Service",
+            "program": "${workspaceFolder}/src/NetworkMonitor.WindowsService/bin/Debug/netcoreapp3.1/NetworkMonitor.WindowsService.exe",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        },
+        {
+            "name": "Attach to .NET Functions",
+            "type": "coreclr",
+            "request": "attach",
+            "processId": "${command:azureFunctions.pickProcess}"
+        }
+    ]
+}

@@ -1,0 +1,172 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Clean Common Library",
+			"command": "dotnet",
+			"args": [
+				"clean",
+				"/property:GenerateFullPaths=true",
+				"${workspaceFolder}/src/NetworkMonitor.CommonLibrary/NetworkMonitor.CommonLibrary.csproj",
+				"/consoleloggerparameters:NoSummary"
+			],
+			"type": "process",
+			"problemMatcher": "$msCompile",
+			"options": {
+				"cwd": "${workspaceFolder}/src"
+			}
+		},
+		{
+			"label": "Build Common Library",
+			"command": "dotnet",
+			"args": [
+				"build",
+				"${workspaceFolder}/src/NetworkMonitor.CommonLibrary/NetworkMonitor.CommonLibrary.csproj",
+				"/property:GenerateFullPaths=true"
+			],
+			"type": "shell",
+			"dependsOn": "Clean Common Library",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "Clean Client Library",
+			"command": "dotnet",
+			"args": [
+				"clean",
+				"/property:GenerateFullPaths=true",
+				"${workspaceFolder}/src/NetworkMonitor.ClientLibrary/NetworkMonitor.ClientLibrary.csproj",
+				"/consoleloggerparameters:NoSummary"
+			],
+			"type": "process",
+			"problemMatcher": "$msCompile",
+			"options": {
+				"cwd": "${workspaceFolder}/src"
+			}
+		},
+		{
+			"label": "Build Client Library",
+			"command": "dotnet",
+			"args": [
+				"build",
+				"${workspaceFolder}/src/NetworkMonitor.ClientLibrary/NetworkMonitor.ClientLibrary.csproj",
+				"/property:GenerateFullPaths=true"
+			],
+			"type": "shell",
+			"dependsOn": "Clean Client Library",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "Clean Cloud Library",
+			"command": "dotnet",
+			"args": [
+				"clean",
+				"/property:GenerateFullPaths=true",
+				"${workspaceFolder}/src/NetworkMonitor.CloudLibrary/NetworkMonitor.CloudLibrary.csproj",
+				"/consoleloggerparameters:NoSummary"
+			],
+			"type": "process",
+			"problemMatcher": "$msCompile",
+			"options": {
+				"cwd": "${workspaceFolder}/src"
+			}
+		},
+		{
+			"label": "Build Cloud Library",
+			"command": "dotnet",
+			"args": [
+				"build",
+				"${workspaceFolder}/src/NetworkMonitor.CloudLibrary/NetworkMonitor.CloudLibrary.csproj",
+				"/property:GenerateFullPaths=true"
+			],
+			"type": "shell",
+			"dependsOn": "Clean Cloud Library",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "Clean Windows Service",
+			"command": "dotnet",
+			"args": [
+				"clean",
+				"/property:GenerateFullPaths=true",
+				"${workspaceFolder}/src/NetworkMonitor.WindowsService/NetworkMonitor.WindowsService.csproj",
+				"/consoleloggerparameters:NoSummary"
+			],
+			"type": "process",
+			"problemMatcher": "$msCompile",
+			"options": {
+				"cwd": "${workspaceFolder}/src"
+			}
+		},
+		{
+			"label": "Build Windows Service",
+			"command": "dotnet",
+			"args": [
+				"build",
+				"${workspaceFolder}/src/NetworkMonitor.WindowsService/NetworkMonitor.WindowsService.csproj",
+				"/property:GenerateFullPaths=true"
+			],
+			"type": "shell",
+			"dependsOn": "Clean Windows Service",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "clean release",
+			"command": "dotnet",
+			"args": [
+				"clean",
+				"--configuration",
+				"Release",
+				"/property:GenerateFullPaths=true",
+				"/consoleloggerparameters:NoSummary"
+			],
+			"type": "process",
+			"problemMatcher": "$msCompile",
+			"options": {
+				"cwd": "${workspaceFolder}/src"
+			}
+		},
+		{
+			"label": "publish",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"--configuration",
+				"Release",
+				"/property:GenerateFullPaths=true",
+				"/consoleloggerparameters:NoSummary"
+			],
+			"type": "process",
+			"dependsOn": "clean release",
+			"problemMatcher": "$msCompile",
+			"options": {
+				"cwd": "${workspaceFolder}/src"
+			}
+		},
+		{
+			"type": "func",
+			"dependsOn": "build",
+			"options": {
+				"cwd": "${workspaceFolder}/src/bin/Debug/netcoreapp3.1"
+			},
+			"command": "host start",
+			"isBackground": true,
+			"problemMatcher": "$func-watch"
+		}
+	]
+}
