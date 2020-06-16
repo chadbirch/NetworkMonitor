@@ -15,3 +15,18 @@ steps:
   inputs:
     projects: 'src/NetworkMonitor.CommonLibrary/NetworkMonitor.CommonLibrary.csproj'
     arguments: '--configuration $(BuildConfiguration)'
+- task: DotNetCoreCLI@2
+  displayName: Build Client Library
+  inputs:
+    projects: 'src/NetworkMonitor.ClientLibrary/NetworkMonitor.ClientLibrary.csproj'
+    arguments: '--configuration $(BuildConfiguration)'
+- task: DotNetCoreCLI@2
+  displayName: Build Cloud Library
+  inputs:
+    projects: 'src/NetworkMonitor.CloudLibrary/NetworkMonitor.CloudLibrary.csproj'
+    arguments: '--configuration $(BuildConfiguration)'
+- task: DotNetCoreCLI@2
+  displayName: Build Windows Service
+  inputs:
+    projects: 'src/NetworkMonitor.WindowsService/NetworkMonitor.WindowsService.csproj'
+    arguments: '--configuration $(BuildConfiguration)'
