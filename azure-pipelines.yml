@@ -11,6 +11,17 @@ pool:
 
 steps:
 - task: DotNetCoreCLI@2
+  displayName: Build Common Library
   inputs:
     command: 'build'
-    projects: '**/*.csproj'
+    projects: './src/NetworkMonitor.CommonLibrary/NetworkMonitor.CommonLibrary.csproj'
+- task: DotNetCoreCLI@2
+  displayName: Build Client Library
+  inputs:
+    command: 'build'
+    projects: './src/NetworkMonitor.ClientLibrary/NetworkMonitor.ClientLibrary.csproj'
+- task: DotNetCoreCLI@2
+  displayName: Build Cloud Library
+  inputs:
+    command: 'build'
+    projects: './src/NetworkMonitor.CloudLibrary/NetworkMonitor.CloudLibrary.csproj'
