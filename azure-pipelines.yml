@@ -26,7 +26,7 @@ steps:
     projects: 'src/NetworkMonitor.CloudLibrary/NetworkMonitor.CloudLibrary.csproj'
     arguments: '--configuration $(BuildConfiguration)'
 - task: DotNetCoreCLI@2
-  displayName: Build Desktop Service
+  displayName: Build Windows Service
   inputs:
-    projects: 'src/NetworkMonitor.DesktopService/NetworkMonitor.DesktopService.csproj'
+    projects: 'src/NetworkMonitor.WindowsService/NetworkMonitor.WindowsService.csproj'
     arguments: '--configuration $(BuildConfiguration)'
