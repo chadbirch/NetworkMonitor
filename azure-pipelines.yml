@@ -14,7 +14,7 @@ steps:
   displayName: Build Common Library
   inputs:
     command: 'build'
-    projects: '.\src\NetworkMonitor.CommonLibrary\NetworkMonitor.CommonLibrary.csproj'
+    projects: '**/src/NetworkMonitor.CommonLibrary/NetworkMonitor.CommonLibrary.csproj'
 - task: DotNetCoreCLI@2
   displayName: Build Client Library
   inputs:
